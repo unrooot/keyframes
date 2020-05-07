@@ -18,11 +18,16 @@ In order to create an animation, create a new module inside of the folder. The n
 		end;
 	}
 
- Tables are keyframes and will play an animation based on the data provided. Keyframes are **synchronous**, and their arguments are as follows: ``EasingDirection``, ``EasingStyle``, ``Duration``, ``Properties``.
+*Tables* are keyframes and will play an animation based on the data provided. Keyframes are **synchronous**, and their arguments are as follows: ``EasingDirection``, ``EasingStyle``, ``Duration``, ``Properties``.
 
-Numbers are delays and will wait for the specified amount of time in seconds.
+*Numbers* are delays and will wait for the specified amount of time in seconds.
 
-Functions will execute as they are written.
+*Functions* will execute as they are written.
+
+### Methods
+The only method that currently exists is ``keyframes:play()``. The arguments for this are ``instance Instance``, ``string AnimationName``, and ``[optional] boolean Asynchronous``. Here's an example:
+
+	keyframes:play(TextLabel, "fadeOut", true)
 
 ### Questions?
 Send me a DM on Twitter, [@unrooot](https://twitter.com/unrooot).
