@@ -1,4 +1,4 @@
-## keyframes
+# keyframes
 Keyframes is a compact and lightweight UI animation library for Roblox.
 
 ### Installation
@@ -38,4 +38,4 @@ keyframes:play(TextLabel, "fadeOut", true)
 ### Questions?
 Send me a DM on Twitter, [@unrooot](https://twitter.com/unrooot).
 
-###### Inspired by FriendlyBiscuit's private module iAnimator, except his is much, much better.
+###### Heavily inspired by FriendlyBiscuit's private module iAnimator, except his is much, much better.
