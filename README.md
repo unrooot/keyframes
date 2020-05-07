@@ -1,4 +1,4 @@
-## keyframes
+# keyframes
 Keyframes is a compact and lightweight UI animation library for Roblox.
 
 ### Installation
