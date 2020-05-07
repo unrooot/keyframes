@@ -38,4 +38,4 @@ keyframes:play(TextLabel, "fadeOut", true)
 ### Questions?
 Send me a DM on Twitter, [@unrooot](https://twitter.com/unrooot).
 
-
+###### Heavily inspired by FriendlyBiscuit's private module iAnimator, except his is much, much better.
