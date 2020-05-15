@@ -12,14 +12,18 @@ local modules = rs:WaitForChild("modules")
 In order to create an animation, create a new module inside of the folder. The name of the module is what the animation will be referred to. Here's an example animation:
 
 ```lua
-return {
-	{"Out", "Quart", 0.25, {Position = u2(0.5, 0, 0.5, 0)};
-	{"InOut", "Sine", 1, {BackgroundColor3 = c3(25, 50, 5)};
-	3;
-	function()
-		print("done!")
-	end;
-}
+local function keyframes(gui)
+	return {
+		{gui.Frame, "Out", "Quart", 0.25, {BackgroundTransparency = 0.5, Size = UDim2.new(0.5, 0, 0.5, 0)}};
+		{gui.Frame.Object, "InOut", "Sine", 0.4, {Position = UDim2.new(0.5, 0, 0.5, 0)}};
+		1;
+		function()
+			print("animation completed")
+		end;
+	}
+end
+
+return keyframes
 ```
 
 *Tables* are keyframes and will play an animation based on the data provided. Keyframes are **synchronous**, and their arguments are as follows: ``EasingDirection``, ``EasingStyle``, ``Duration``, ``Properties``.
@@ -29,10 +33,10 @@ return {
 *Functions* will execute as they are written.
 
 ### Methods
-The only method that currently exists is ``keyframes:play()``. The arguments for this are ``instance Instance``, ``string AnimationName``, and ``[optional] boolean Asynchronous``. Here's an example:
+The only method that currently exists is ``keyframes:play()``. The arguments for this are ``instance GUIObject``, ``string AnimationName``, and ``[optional] boolean Asynchronous``. Here's an example:
 
 ```lua
-keyframes:play(TextLabel, "fadeOut", true)
+keyframes:play(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui").ScreenGui, "animationName", true)
 ```
 
 ### Questions?
