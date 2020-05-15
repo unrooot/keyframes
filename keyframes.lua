@@ -1,4 +1,4 @@
--- @unrooot // may 5th, 2020
+-- @unrooot // may 5th, 2020 (last updated may 14th, 2020)
 -- github.com/unrooot/keyframes
 
 local rs = game:GetService("ReplicatedStorage")
@@ -22,17 +22,17 @@ local function playAnimation(instance, data, asynchronous)
 	for _,v in pairs(data) do
 		if typeof(v) == "table" then
 			-- convert to enum (if needed)
-			local direction, style = v[1], v[2]
+			local direction, style = v[2], v[3]
 			if typeof(direction) == "string" then
-				v[1] = Enum.EasingDirection[direction]
+				v[2] = Enum.EasingDirection[direction]
 			end
 
 			if typeof(style) == "string" then
-				v[2] = Enum.EasingStyle[style]
+				v[3] = Enum.EasingStyle[style]
 			end
 
 			-- play animation
-			ts:Create(instance, tinfo(v[3], v[2], v[1]), v[4]):Play()
+			ts:Create(v[1], tinfo(v[4], v[3], v[2]), v[5]):Play()
 			if not asynchronous then
 				wait(v[3])
 			end
@@ -48,7 +48,7 @@ function lib:play(instance, animation, asynchronous)
 	if typeof(animation) == "string" then
 		local module = getModule(animation)
 		if module then
-			local keyframes = require(module)
+			local keyframes = require(module)(instance)
 			playAnimation(instance, keyframes, asynchronous)
 		else
 			warn(format("[keyframes] animation %s not found.", animation))
