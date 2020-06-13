@@ -11,7 +11,7 @@ local tinfo = TweenInfo.new
 local lib = {}
 
 local function getModule(query)
-	for _,module in pairs(modules:GetChildren()) do
+	for _,module in pairs(modules:GetDescendants()) do
 		if module.Name == query then
 			return module
 		end
