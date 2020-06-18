@@ -32,14 +32,26 @@ return keyframes
 
 *Functions* will execute as they are written.
 
-### Methods
-The only method that currently exists is ``keyframes:play()``. The arguments for this are ``instance GUIObject``, ``string AnimationName``, and ``[optional] boolean Asynchronous``. Here's an example:
+In the event that you want to pass another table of keyframes to the handler, simply return another table. This is particularly useful in the event that you want to create a keyframe for a hover effect. Here's an example:
 
 ```lua
-keyframes:play(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui").ScreenGui, "animationName", true)
+-- Hover effect!
+local function keyframes(gui)
+	return {
+		{gui, "Out", "Sine", 0.3, {BackgroundTransparency = 0.3}};
+	},
+	{
+		{gui, "Out", "Sine", 0.3, {BackgroundTransparency = 0}};
+	}
+end
+```
+
+### Methods
+The only method that currently exists is ``keyframes:play()``. The arguments for this are ``instance GUIObject``, ``string AnimationName``, ``[optional] boolean Reverse`` and ``[optional] boolean Asynchronous``. Here's an example:
+
+```lua
+keyframes:play(game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui").ScreenGui, "animationName", false, true)
 ```
 
 ### Questions?
 Send me a DM on Twitter, [@unrooot](https://twitter.com/unrooot).
-
-###### Heavily inspired by FriendlyBiscuit's private module iAnimator, except his is much, much better.
