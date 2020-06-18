@@ -44,12 +44,16 @@ local function playAnimation(instance, data, asynchronous)
 	end
 end
 
-function lib:play(instance, animation, asynchronous)
+function lib:play(instance, animation, reverse, asynchronous)
 	if typeof(animation) == "string" then
 		local module = getModule(animation)
 		if module then
-			local keyframes = require(module)(instance)
-			playAnimation(instance, keyframes, asynchronous)
+			local keyframes, reverseKeyframes = require(module)(instance)
+			if reverse then
+				playAnimation(instance, reverseKeyframes, asynchronous)
+			else
+				playAnimation(instance, keyframes, asynchronous)
+			end
 		else
 			warn(format("[keyframes] animation %s not found.", animation))
 		end
