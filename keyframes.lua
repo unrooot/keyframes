@@ -18,7 +18,7 @@ local function getModule(query)
 	end
 end
 
-local function playAnimation(instance, data, asynchronous)
+local function playAnimation(data, asynchronous)
 	for _,v in pairs(data) do
 		if typeof(v) == "table" then
 			-- convert to enum (if needed)
@@ -44,21 +44,21 @@ local function playAnimation(instance, data, asynchronous)
 	end
 end
 
-function lib:play(instance, animation, reverse, asynchronous)
+function lib:play(instance, animation, reverse, asynchronous, ...)
 	if typeof(animation) == "string" then
 		local module = getModule(animation)
 		if module then
-			local keyframes, reverseKeyframes = require(module)(instance)
+			local keyframes, reverseKeyframes = require(module)(instance, ...)
 			if reverse then
-				playAnimation(instance, reverseKeyframes, asynchronous)
+				playAnimation(reverseKeyframes, asynchronous)
 			else
-				playAnimation(instance, keyframes, asynchronous)
+				playAnimation(keyframes, asynchronous)
 			end
 		else
 			warn(format("[keyframes] animation %s not found.", animation))
 		end
 	elseif typeof(animation) == "table" then
-		playAnimation(instance, animation, asynchronous)
+		playAnimation(animation, asynchronous)
 	end
 end
 
