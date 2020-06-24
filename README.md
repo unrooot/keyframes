@@ -1,5 +1,5 @@
 # keyframes
-Keyframes is a compact and lightweight UI animation library for Roblox.
+Keyframes is a compact and lightweight UI animation module for Roblox.
 
 ### Installation
 Create the module and import the contents of ``keyframes.lua``, then specify the folder in which your animation modules will reside. The default folder path is ``game.ReplicatedStorage.modules``.
